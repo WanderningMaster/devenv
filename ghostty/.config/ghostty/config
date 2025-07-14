@@ -1,0 +1,17 @@
+window-decoration = false
+
+theme = dark:rose-pine,light:rose-pine
+cursor-color = #ffffff
+background-opacity = 1
+
+font-feature = -calt
+
+cursor-invert-fg-bg = true
+cursor-style-blink = false
+cursor-style = block
+
+shell-integration-features = no-cursor
+
+link-url = true
+
+keybind = ctrl+backspace=text:\x17

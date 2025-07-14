@@ -1,0 +1,36 @@
+return {
+	-- {
+	-- 	'stevearc/conform.nvim',
+	-- 	config = function()
+	-- 		require('conform').setup {
+	-- 			formatters = {
+	-- 				prettier = {
+	-- 					require_cwd = true,
+	-- 					cmd = require("conform.util").root_file({
+	-- 						".prettierrc",
+	-- 						".prettierrc.json",
+	-- 						".prettierrc.yml",
+	-- 						".prettierrc.yaml",
+	-- 						".prettierrc.json5",
+	-- 						".prettierrc.js",
+	-- 						".prettierrc.cjs",
+	-- 						".prettierrc.mjs",
+	-- 						".prettierrc.toml",
+	-- 						"prettier.config.js",
+	-- 						"prettier.config.cjs",
+	-- 						"prettier.config.mjs",
+	-- 					})
+	-- 				}
+	-- 			},
+	-- 			formatters_by_ft = {
+	-- 				-- Conform will run the first available formatter
+	-- 				javascript = { 'prettier', stop_after_first = true },
+	-- 			},
+	-- 			format_on_save = {
+	-- 				timeout_ms = 500,
+	-- 				lsp_format = "first"
+	-- 			}
+	-- 		}
+	-- 	end,
+	-- },
+}

@@ -1,0 +1,139 @@
+* {
+  min-height: 0;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+window#waybar {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  /* background-color: #1e1e2e; */
+  /* background-color: #181825; */
+  /* background-color: #11111b; */
+  background-color: rgba(0,0,0,0);
+  /* background-color: rgba(24, 24, 37, 0.6); */
+}
+
+#workspaces {
+  padding: 0.4rem 0.25rem;
+  margin: 0.4rem 0.25rem;
+  border-radius: 6px;
+  background-color: #1e1e2e;
+}
+
+#workspaces button:hover {
+  box-shadow: none; /* Remove predefined box-shadow */
+  text-shadow: none; /* Remove predefined text-shadow */
+  background: none; /* Remove predefined background color (white) */
+  transition: none; /* Disable predefined animations */
+  border: none;
+}
+
+#workspaces button {
+  color: #cdd6f4;
+}
+
+#workspaces button.active {
+  background-color: #1e1e2e;
+  color: #89b4fa;
+}
+
+/* #workspaces button.urgent { */
+/*   background-color: #1e1e2e; */
+/*   color: #f38ba8; */
+/* } */
+
+#clock,
+#pulseaudio,
+#custom-logo,
+#custom-power,
+#custom-spotify,
+#custom-notification,
+#cpu,
+#tray,
+#memory,
+#language,
+#window,
+#battery,
+#backlight,
+#mpris {
+  padding: 0.3rem 0.6rem;
+  margin: 0.4rem 0.25rem;
+  border-radius: 6px;
+  background-color: #1e1e2e;
+}
+
+#mpris.playing {
+  color: #a6e3a1;
+}
+
+#mpris.paused {
+  color: #9399b2;
+}
+
+#custom-sep {
+  padding: 0px;
+  color: #585b70;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+#cpu {
+  color: #94e2d5;
+}
+
+#memory {
+  color: #cba6f7;
+}
+
+#clock {
+  color: #74c7ec;
+}
+
+#clock.simpleclock {
+  color: #89b4fa;
+}
+
+#window {
+  color: #cdd6f4;
+}
+
+#pulseaudio {
+  color: #b4befe;
+}
+
+#pulseaudio.muted {
+  color: #a6adc8;
+}
+
+#custom-logo {
+  color: #89b4fa;
+}
+
+#custom-power {
+  color: #f38ba8;
+}
+
+#backlight {
+  color: white;
+}
+
+
+#language {
+  min-width: 20px;
+  color: #94e2d5;
+}
+
+#battery {
+  color: #b4befe;
+}
+#custom-notification {
+  color: #b4befe;
+}
+tooltip {
+  background-color: #181825;
+  border: 2px solid #89b4fa;
+}
