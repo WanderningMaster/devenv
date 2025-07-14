@@ -15,7 +15,7 @@ A simple Bash script to manage and deploy dotfiles and configurations using GNU 
 1. Clone this repository into your desired development environment directory (default: `$HOME/devenv`):
 
    ```bash
-   git clone https://github.com/yourusername/dev-stow.git "$DEVPATH"
+   git clone https://github.com/WanderningMaster/devenv.git "$DEVPATH"
    ```
 2. Make the script executable:
 
