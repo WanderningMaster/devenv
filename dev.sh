@@ -93,13 +93,13 @@ fi
 echo
 
 
-dirs=(*/)
+dirs=($DEV_PATH/*/)
 if (( ${#MODS[@]} )); then
   filtered=()
   for d in "${dirs[@]}"; do
     name="${d%/}"            # strip trailing slash
     for want in "${MODS[@]}"; do
-      if [[ "$name" == "$want" ]]; then
+      if [[ $(basename "$name") == "$want" ]]; then
         filtered+=("$d")
         break
       fi
@@ -112,11 +112,9 @@ for d in "${dirs[@]}"; do
   echo "Found configuration: ${d%/}"
 done
 
-echo
-
 if [[ $DRY == false ]]; then
   for d in "${dirs[@]}"; do
-	mod=${d%/}  
+	mod=$(basename ${d%/})
 	echo "Creating symlinks for $mod"
 
 	if [[ "$mod" == "ghostty" ]]; then
