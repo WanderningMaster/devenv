@@ -1,0 +1,1 @@
+pkill waybar & hyprctl dispatch exec waybar -- -c ~/.config/waybar/config-second-display.jsonc
