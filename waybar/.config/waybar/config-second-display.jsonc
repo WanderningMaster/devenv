@@ -56,21 +56,7 @@
 	  "all-outputs": true,
 	  "disable-scroll": false,
 	  "active-only": false,
-	  "format": "{id}  {icon}",
-	  "format-icons": {
-		  "1": "",
-		  "2": "",
-		  "3": "",
-		  "4": "",
-		  "5": "",
-		  "6": "",
-		  "7": "",
-		  "8": "",
-		  "9": "",
-		  "10": "",
-		  "active": "",
-		  // "default": ""
-	  }
+	  "format": "{id}",
   },
   "hyprland/window": {
     "format": "{title}",

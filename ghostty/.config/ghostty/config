@@ -2,7 +2,7 @@ window-decoration = false
 
 theme = dark:rose-pine,light:rose-pine
 cursor-color = #ffffff
-background-opacity = 1
+background-opacity = 0.95
 
 font-feature = -calt
 

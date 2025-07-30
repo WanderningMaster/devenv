@@ -1,1 +1,2 @@
 pkill waybar & hyprctl dispatch exec waybar -- -c ~/.config/waybar/config-second-display.jsonc
+pkill wayvnc & hyprctl dispatch exec wayvnc -- 0.0.0.0 -o HDMI-A-3

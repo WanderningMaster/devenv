@@ -8,17 +8,13 @@
 window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
-  /* background-color: #1e1e2e; */
-  /* background-color: #181825; */
-  /* background-color: #11111b; */
   background-color: rgba(0,0,0,0);
-  /* background-color: rgba(24, 24, 37, 0.6); */
 }
 
 #workspaces {
   padding: 0.4rem 0.25rem;
   margin: 0.4rem 0.25rem;
-  border-radius: 6px;
+  border-radius: 25px;
   background-color: #1e1e2e;
 }
 
@@ -32,11 +28,13 @@ window#waybar {
 
 #workspaces button {
   color: #cdd6f4;
+  min-width: 12px;
 }
 
 #workspaces button.active {
-  background-color: #1e1e2e;
-  color: #89b4fa;
+  border-radius: 25px;
+  background-color: #89b4fa;
+  color: #1e1e2e;
 }
 
 /* #workspaces button.urgent { */
@@ -58,9 +56,9 @@ window#waybar {
 #battery,
 #backlight,
 #mpris {
-  padding: 0.3rem 0.6rem;
+  padding: 0.6rem 0.8rem;
   margin: 0.4rem 0.25rem;
-  border-radius: 6px;
+  border-radius: 25px;
   background-color: #1e1e2e;
 }
 

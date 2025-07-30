@@ -1,1 +1,2 @@
 pkill waybar & hyprctl dispatch exec waybar
+pkill wayvnc & hyprctl dispatch exec wayvnc -- 0.0.0.0
