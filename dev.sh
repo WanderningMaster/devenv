@@ -63,25 +63,25 @@ if [[ ${1:-} == "sync" ]]; then
     exit 1
   fi
 
-  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    echo "Error: devenv sync must run inside a git repository" >&2
+  if ! git -C "$DEV_PATH" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo "Error: devenv sync requires a git repository at $DEV_PATH" >&2
     exit 1
   fi
 
   if [[ $DRY == true ]]; then
     echo "Dry-run mode: no changes will be made"
-    echo "git status --porcelain"
-    echo "git add -A"
-    echo "git commit -m 'chore: sync devenv'"
-    echo "git push"
+    echo "git -C '$DEV_PATH' status --porcelain"
+    echo "git -C '$DEV_PATH' add -A"
+    echo "git -C '$DEV_PATH' commit -m 'chore: sync devenv'"
+    echo "git -C '$DEV_PATH' push"
     exit 0
   fi
 
-  if [[ -n $(git status --porcelain) ]]; then
-    git add -A
-    git commit -m "chore: sync devenv"
+  if [[ -n $(git -C "$DEV_PATH" status --porcelain) ]]; then
+    git -C "$DEV_PATH" add -A
+    git -C "$DEV_PATH" commit -m "chore: sync devenv"
   fi
-  git push
+  git -C "$DEV_PATH" push
   exit 0
 fi
 
