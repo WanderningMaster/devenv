@@ -2,7 +2,7 @@ window-decoration = false
 
 theme = Rose Pine
 cursor-color = #ffffff
-background-opacity = 0.9
+background-opacity = 0.8
 scrollback-limit = 70000000
 
 font-feature = -calt
