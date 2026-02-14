@@ -70,7 +70,6 @@ if [[ ${1:-} == "sync" ]]; then
 
   if [[ $DRY == true ]]; then
     echo "Dry-run mode: no changes will be made"
-    echo "git -C '$DEV_PATH' status --porcelain"
     echo "git -C '$DEV_PATH' add -A"
     echo "git -C '$DEV_PATH' commit -m 'chore: sync devenv'"
     echo "git -C '$DEV_PATH' push"
@@ -80,8 +79,8 @@ if [[ ${1:-} == "sync" ]]; then
   if [[ -n $(git -C "$DEV_PATH" status --porcelain) ]]; then
     git -C "$DEV_PATH" add -A
     git -C "$DEV_PATH" commit -m "chore: sync devenv"
+    git -C "$DEV_PATH" push
   fi
-  git -C "$DEV_PATH" push
   exit 0
 fi
 
