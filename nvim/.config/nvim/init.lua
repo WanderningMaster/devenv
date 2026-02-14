@@ -317,6 +317,7 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua',
         'prettier',
+        'templ',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -339,7 +340,25 @@ require('lazy').setup({
         group = vim.api.nvim_create_augroup('MyAutocmdsJavaScripFormatting', {}),
       })
 
-      vim.api.nvim_create_autocmd({ 'BufWritePre' }, { pattern = { '*.templ' }, callback = vim.lsp.buf.format })
+      local custom_format = function()
+        if vim.bo.filetype == 'templ' then
+          local bufnr = vim.api.nvim_get_current_buf()
+          local filename = vim.api.nvim_buf_get_name(bufnr)
+          local cmd = 'templ fmt ' .. vim.fn.shellescape(filename)
+
+          vim.fn.jobstart(cmd, {
+            on_exit = function()
+              -- Reload the buffer only if it's still the current buffer
+              if vim.api.nvim_get_current_buf() == bufnr then
+                vim.cmd 'e!'
+              end
+            end,
+          })
+        else
+          vim.lsp.buf.format()
+        end
+      end
+      vim.api.nvim_create_autocmd({ 'BufWritePre' }, { pattern = { '*.templ' }, callback = custom_format })
 
       vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         -- delay update diagnostics
@@ -363,6 +382,13 @@ require('lazy').setup({
           preferences = {
             importModuleSpecifierPreference = 'relative',
             importModuleSpecifierEnding = 'minimal',
+          },
+        },
+      }
+      require('lspconfig').rust_analyzer.setup {
+        init_options = {
+          cargo = {
+            -- features = { 'local' },
           },
         },
       }

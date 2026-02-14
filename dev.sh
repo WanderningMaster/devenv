@@ -4,6 +4,7 @@ set -euo pipefail
 usage() {
   cat <<EOF
 Usage: devenv [OPTIONS]
+       devenv sync [--dry]
 
 Options:
   --help, -h
@@ -36,6 +37,12 @@ Examples:
 
   # Combine dry-run with mods filter:
   devenv --dry --mods ghostty
+
+  # Stage, commit, and push changes (auto message):
+  devenv sync
+
+  # Preview sync commands without changes:
+  devenv sync --dry
 EOF
 }
 
@@ -44,6 +51,39 @@ DEV_PATH="${DEVPATH:-$HOME/devenv}"
 DRY=false
 UPDATE=false
 MODS=()
+
+if [[ ${1:-} == "sync" ]]; then
+  shift
+  if [[ ${1:-} == "-d" || ${1:-} == "--dry" ]]; then
+    DRY=true
+    shift
+  fi
+  if [[ $# -gt 0 ]]; then
+    echo "Unknown option for sync: $1" >&2
+    exit 1
+  fi
+
+  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo "Error: devenv sync must run inside a git repository" >&2
+    exit 1
+  fi
+
+  if [[ $DRY == true ]]; then
+    echo "Dry-run mode: no changes will be made"
+    echo "git status --porcelain"
+    echo "git add -A"
+    echo "git commit -m 'chore: sync devenv'"
+    echo "git push"
+    exit 0
+  fi
+
+  if [[ -n $(git status --porcelain) ]]; then
+    git add -A
+    git commit -m "chore: sync devenv"
+  fi
+  git push
+  exit 0
+fi
 
 
 while [[ $# -gt 0 ]]; do
@@ -119,7 +159,7 @@ if [[ $DRY == false ]]; then
 
 	if [[ "$mod" == "ghostty" ]]; then
 	   # ghostty creates non-empty config if its not exists
-	   # so we need to delete it before creating symlink 
+	   # so we need to delete it before creating symlink
 
 	   rm -rf $HOME/.config/ghostty
 	fi

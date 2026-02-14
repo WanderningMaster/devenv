@@ -3,8 +3,14 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/zig-linux
 export PATH=$PATH:~/.cargo/bin
 export PATH="$HOME/go/bin:$PATH"
+export PATH=$HOME/.local/bin:$PATH
 
 export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+export PATH="$HOME/.npm/bin:$PATH"
+
+export XDG_SESSION_TYPE=wayland
+export MOZ_ENABLE_WAYLAND=1
+export VERBOSE=1
 
 # bindkey "^L" clear-screen
 
@@ -62,7 +68,7 @@ tmfzf() {
 switch-config() {
   case "$1" in
     outsource) EMAIL=andrii.h@brightnode.io; SSH_KEY=~/.ssh/github_outsource ;;
-    cgs)       EMAIL=andrew.h@cgsteam.io;    SSH_KEY=~/.ssh/cgs             ;;
+    cgs)       EMAIL=andrew.h@cgsteam.io;    SSH_KEY=~/.ssh/cgs-corp         ;;
     *)         EMAIL=user12341528@gmail.com; SSH_KEY=~/.ssh/github_personal ;;
   esac
 
@@ -70,6 +76,15 @@ switch-config() {
   ssh-add -D
   ssh-add "$SSH_KEY"
   git config --global user.email "$EMAIL"
+}
+zvs() {
+	local version="$1"
+	local path="$HOME/zig-$version"
+	local zig_path="$HOME/zig-linux"
+
+	/usr/bin/rm -r "$zig_path"
+	/usr/bin/cp -r "$path" "$path-tmp"
+	/usr/bin/mv "$path-tmp" "$zig_path"
 }
 
 function kill-port {
@@ -94,9 +109,12 @@ alias v="nvim ."
 alias air="$(go env GOPATH)/bin/air"
 alias tls="tmux ls"
 alias cls="clear"
+alias k="kubectl"
 
-alias devon="nmcli con up AOutsource"
-alias devoff="nmcli con down AOutsource"
+alias devon="sudo openvpn --config $HOME/brightnode.ovpn --daemon"
+alias devoff="sudo pkill openvpn"
+# alias devon="nmcli con up AOutsource"
+# alias devoff="nmcli con down AOutsource"
 
 # g shell setup
 if [ -f "${HOME}/.g/env" ]; then
@@ -116,3 +134,11 @@ export PATH=$PATH:/home/andrii/zig
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# opencode
+export PATH=/home/andrii/.opencode/bin:$PATH
+. "/home/andrii/.deno/env"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
