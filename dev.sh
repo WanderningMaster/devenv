@@ -80,6 +80,8 @@ if [[ ${1:-} == "sync" ]]; then
     git -C "$DEV_PATH" add -A
     git -C "$DEV_PATH" commit -m "chore: sync devenv"
     git -C "$DEV_PATH" push
+  else
+      echo "All synced, nothing to do."
   fi
   exit 0
 fi
