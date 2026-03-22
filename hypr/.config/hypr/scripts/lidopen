@@ -1,6 +1,7 @@
 pkill waybar & hyprctl dispatch exec waybar
 pkill wayvnc & hyprctl dispatch exec wayvnc -- 0.0.0.0
 
+
 hyprctl --batch "\
 keyword monitor eDP-1,preferred,0x0,1.2; \
 keyword monitor DP-3, 1920x1080@74.97, auto, 1; \
