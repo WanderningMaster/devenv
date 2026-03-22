@@ -1,2 +1,17 @@
 pkill waybar & hyprctl dispatch exec waybar
 pkill wayvnc & hyprctl dispatch exec wayvnc -- 0.0.0.0
+
+hyprctl --batch "\
+keyword monitor eDP-1,preferred,0x0,1.2; \
+keyword monitor DP-3, 1920x1080@74.97, auto, 1; \
+keyword workspace 1, persistent:true, monitor:eDP-1, default:true ; \
+keyword workspace 2, persistent:true, monitor:eDP-1 ; \
+keyword workspace 3, persistent:true, monitor:eDP-1 ; \
+keyword workspace 4, persistent:true, monitor:eDP-1 ; \
+keyword workspace 5, persistent:true, monitor:eDP-1 ; \
+keyword workspace 6, persistent:true, monitor:eDP-1 ; \
+keyword workspace 7, persistent:true, monitor:eDP-1 ; \
+keyword workspace 8, persistent:true, monitor:HDMI-A-3, default:true ; \
+keyword workspace 9, persistent:true, monitor:HDMI-A-3 ; \
+keyword workspace 10, persistent:true, monitor:HDMI-A-3 \
+"

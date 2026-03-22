@@ -110,6 +110,7 @@ alias air="$(go env GOPATH)/bin/air"
 alias tls="tmux ls"
 alias cls="clear"
 alias k="kubectl"
+alias tf="terraform"
 
 alias devon="sudo openvpn --config $HOME/brightnode.ovpn --daemon"
 alias devoff="sudo pkill openvpn"
@@ -142,3 +143,11 @@ export PATH=/home/andrii/.opencode/bin:$PATH
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# pnpm
+export PNPM_HOME="/home/andrii/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

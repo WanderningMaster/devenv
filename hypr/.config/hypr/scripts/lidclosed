@@ -1,2 +1,16 @@
 pkill waybar & hyprctl dispatch exec waybar -- -c ~/.config/waybar/config-second-display.jsonc
 pkill wayvnc & hyprctl dispatch exec wayvnc -- 0.0.0.0 -o HDMI-A-3
+
+hyprctl --batch "\
+keyword monitor eDP-1,disable ; \
+keyword workspace 1, persistent:true, monitor:HDMI-A-3 ; \
+keyword workspace 2, persistent:true, monitor:HDMI-A-3 ; \
+keyword workspace 3, persistent:true, monitor:HDMI-A-3 ; \
+keyword workspace 4, persistent:true, monitor:HDMI-A-3 ; \
+keyword workspace 5, persistent:true, monitor:HDMI-A-3 ; \
+keyword workspace 6, persistent:true, monitor:HDMI-A-3 ; \
+keyword workspace 7, persistent:true, monitor:HDMI-A-3 ; \
+keyword workspace 8, persistent:true, monitor:HDMI-A-3, default:true ; \
+keyword workspace 9, persistent:true, monitor:HDMI-A-3 ; \
+keyword workspace 10, persistent:true, monitor:HDMI-A-3 \
+"
